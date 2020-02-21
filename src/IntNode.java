@@ -1,6 +1,8 @@
 // Luke Brandes
 // singly linked list containing ints
 
+// TODO comment and implement IntNodeAdvancedTest
+
 public class IntNode {
     private int data;
     private IntNode next;
