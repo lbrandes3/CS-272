@@ -1,7 +1,10 @@
 // Luke Brandes
 // singly linked list containing ints
 
-// TODO comment and implement IntNodeAdvancedTest
+// TODO comment
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class IntNode {
     private int data;
@@ -82,8 +85,9 @@ public class IntNode {
     }
 
     public int sumLast(int num) {
-        if (num == 0 || next == null) { return data; }
-        return data + next.sumLast(num--);
+        if (num == 1 || next == null) { return data; }
+        num--;
+        return data + next.sumLast(num);
     }
 
     public IntNode copyOdd() {
@@ -124,10 +128,11 @@ public class IntNode {
         return next;
     }
 
-    public boolean isCyclic(IntNode head) {
+    public boolean isCyclic(List<IntNode> heads) {
         if (next == null) { return false; }
-        if (next == head) { return true; }
-        return isCyclic(head);
+        if (heads.contains(next)) { return true; }
+        heads.add(this);
+        return next.isCyclic(heads);
     }
 
     // returns length of given node
@@ -169,6 +174,6 @@ public class IntNode {
 
     public static boolean hasCycle(IntNode head) {
         if (head == null) { return false; }
-        return head.isCyclic(head);
+        return head.isCyclic(new ArrayList<IntNode>());
     }
 }
