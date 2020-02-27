@@ -1,8 +1,6 @@
 // Luke Brandes
 // singly linked list containing ints
 
-// TODO comment
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -69,6 +67,7 @@ public class IntNode {
         return next.contains(n);
     }
 
+    // recursively adds to the last node
     public void addToEnd(int newData) {
         if (next == null) {
             next = new IntNode(newData, null);
@@ -77,6 +76,7 @@ public class IntNode {
         }
     }
 
+    // recursively counts the number of odds
     public int numOdds() {
         if (next == null) {
             return data % 2;
@@ -84,12 +84,14 @@ public class IntNode {
         return data % 2 + next.numOdds();
     }
 
+    // recursively sums the next num values
     public int sumLast(int num) {
         if (num == 1 || next == null) { return data; }
         num--;
         return data + next.sumLast(num);
     }
 
+    // recursively copies odd values
     public IntNode copyOdd() {
         if (next == null) {
             if (data % 2 == 1) {
@@ -103,6 +105,7 @@ public class IntNode {
         return next.copyOdd();
     }
 
+    // recursively removes all values with data e
     public IntNode removeAll(int e) {
         if (next == null) {
             if (data == e) {
@@ -119,6 +122,7 @@ public class IntNode {
         }
     }
 
+    // recursively reverses the list
     public IntNode reverse() {
         if (next == null) {
             return this;
@@ -128,6 +132,7 @@ public class IntNode {
         return next;
     }
 
+    // recursively finds whether cyclic
     public boolean isCyclic(List<IntNode> heads) {
         if (next == null) { return false; }
         if (heads.contains(next)) { return true; }
@@ -147,31 +152,37 @@ public class IntNode {
         return false;
     }
 
+    // calls numOdds to find numOdd
     public static int listOddNumber(IntNode head) {
         if (head == null) { return 0; }
         return head.numOdds();
     }
 
+    // calls sum last with num
     public static int sumLast(IntNode head, int num) {
         if (head == null) { return 0; }
         return head.sumLast(num);
     }
 
+    // copies the odd values into a list
     public static IntNode copyOdd(IntNode head) {
         if (head == null) { return null; }
         return head.copyOdd();
     }
 
+    // calls removeAll to remove all e values
     public static IntNode removeAll(IntNode head, int e) {
         if (head == null) { return null; }
         return head.removeAll(e);
     }
 
+    // calls reverse to reverse the array
     public static IntNode reverse(IntNode head) {
         if (head == null) { return null; }
         return head.reverse();
     }
 
+    // calls isCyclic
     public static boolean hasCycle(IntNode head) {
         if (head == null) { return false; }
         return head.isCyclic(new ArrayList<IntNode>());
