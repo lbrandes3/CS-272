@@ -51,6 +51,5 @@ public class Permutation {
             ints.add(i);
         }
         permutations(new ArrayList<>(), ints);
-
     }
 }
